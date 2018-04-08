@@ -4,7 +4,6 @@ public class ShoppingItem implements Comparable<ShoppingItem> {
     private final String name;
     private int quantityAvailable;
     private double price;
-    private int reserved = 0;
 
     public ShoppingItem(String name, double price) {
         this.name = name;
@@ -38,23 +37,7 @@ public class ShoppingItem implements Comparable<ShoppingItem> {
     }   //  Adjusting price
 
     public int getQuantityAvailable() {
-        return quantityAvailable - reserved;
-    }
-
-    public int reserveStock(int quantity) {
-        if (quantity <= reserved) {
-            reserved -= quantityAvailable;
-            return quantity;
-        }
-        return 0;
-    }
-
-    public int unReserveStock(int quantity) {
-        if (quantityAvailable <= reserved) {
-            quantity -= reserved;
-            return quantity;
-        }
-        return 0;
+        return quantityAvailable;
     }
 
     public void adjustQuantity(int quantity) {
